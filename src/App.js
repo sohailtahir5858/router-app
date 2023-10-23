@@ -14,8 +14,10 @@ class App extends Component {
       <div>
         <NavBar />
         <Switch>
-          <Route path="/posts" component={Posts} />
-          <Route path="/products" component={Products} />
+          {/* passing custom props without default props */}
+          <Route path="/posts" render={() => <Posts args={'som args'} />} />
+          {/* passing the default props as well */}
+          <Route path="/products" render={(props) => <Posts args={'som args'} {...props} />} />
           <Route path="/admin" component={Dashboard} />
           <Route path="/" component={Home} />
         </Switch>
